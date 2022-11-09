@@ -13,7 +13,7 @@ lr: 0.1
 lr_policy: cosine_lr
 
 # ===== Network training config ===== #
-pretrained: runs/baseline/prune_rate=1.0/0/checkpoints/epoch_99.state
+pretrained: pretrained\pretrained_model.state
 multigpu: [0]
 epochs: 100
 weight_decay: 0.0001
