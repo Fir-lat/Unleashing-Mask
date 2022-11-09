@@ -19,7 +19,7 @@ python main.py --config <path/to/config> <override-args>
 
 Common example ```override-args``` include ```--multigpu=<gpu-ids seperated by commas, no spaces>``` to run on GPUs. Run ```python main --help``` for more details.
 
-We provide three pretrained DenseNet-101 models in ```pretrained```.
+We provide a pretrained DenseNet-101 model in ```pretrained```.
 
 ### Example Run
 
