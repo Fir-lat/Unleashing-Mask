@@ -1,7 +1,5 @@
 # Unleashing Mask: Explore the Potential Out-Of-Distribution Detection Capability
 
-The whole repository is based on [hidden-networks](https://github.com/allenai/hidden-networks).
-
 ## Setup
 
 1. Set up a virtualenv with python 3.7.4. You can use pyvenv or conda for this.
@@ -96,12 +94,3 @@ tqdm==4.36.1
 Werkzeug==0.16.0
 ```
 
-
-## Reference Code
-[1] hidden-networks: https://github.com/allenai/hidden-networks
-
-[2] POEM: https://github.com/deeplearning-wisc/poem
-
-[3] Energy: https://github.com/wetliu/energy_ood
-
-[4] ODIN: https://github.com/JoonHyung-Park/ODIN
