@@ -116,7 +116,7 @@ class NeuralLinear(object):
             out_energy_losses.update(out_energy_loss.data, out_len)
 
 
-            loss = ((in_loss + self.args.energy_beta * (((out_energy_loss + in_energy_loss) - self.args.UM_e).abs() + self.args.flood_e)) - self.args.flood_whole).abs() + self.args.flood_whole
+            loss = ((in_loss + self.args.energy_beta * (((out_energy_loss + in_energy_loss) - self.args.UM_e).abs() + self.args.UM_e)) - self.args.UM_whole).abs() + self.args.UM_whole
 
 
             nat_prec1 = accuracy(in_output.data, in_target, topk=(1,))[0]
@@ -180,7 +180,7 @@ class NeuralLinear(object):
             in_output = cat_output[:in_len] 
             out_output = cat_output[in_len:] 
 
-            in_loss = (criterion(in_output, in_target) - self.args.flood_ce).abs() + self.args.flood_ce
+            in_loss = (criterion(in_output, in_target) - self.args.UM_ce).abs() + self.args.UM_ce
             in_losses.update(in_loss.data, in_len) 
 
             if self.args.oe:
@@ -189,13 +189,13 @@ class NeuralLinear(object):
                 E = -torch.logsumexp(cat_output, dim=1)
                 Ec_in = E[:in_len]
                 Ec_out = E[in_len:]
-                in_energy_loss = (torch.pow(F.relu(Ec_in-self.args.m_in), 2).mean() - self.args.flood_ine).abs() + self.args.flood_ine
-                out_energy_loss = (torch.pow(F.relu(self.args.m_out-Ec_out), 2).mean() - self.args.flood_oute).abs() + self.args.flood_oute
+                in_energy_loss = (torch.pow(F.relu(Ec_in-self.args.m_in), 2).mean() - self.args.UM_ine).abs() + self.args.UM_ine
+                out_energy_loss = (torch.pow(F.relu(self.args.m_out-Ec_out), 2).mean() - self.args.UM_oute).abs() + self.args.UM_oute
 
                 in_energy_losses.update(in_energy_loss.data, in_len)
                 out_energy_losses.update(out_energy_loss.data, out_len)
 
-                loss = ((in_loss + self.args.energy_beta * (((out_energy_loss + in_energy_loss) - self.args.flood_e).abs() + self.args.flood_e)) - self.args.flood_whole).abs() + self.args.flood_whole
+                loss = ((in_loss + self.args.energy_beta * (((out_energy_loss + in_energy_loss) - self.args.UM_e).abs() + self.args.UM_e)) - self.args.UM_whole).abs() + self.args.UM_whole
 
 
             nat_prec1 = accuracy(in_output.data, in_target, topk=(1,))[0]
