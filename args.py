@@ -19,7 +19,7 @@ def parse_arguments():
     parser.add_argument('--droprate', default=0.0, type=float, help='dropout probability (default: 0.0)')
     parser.add_argument('--widen-factor', default=4, type=int, help='widen factor (default: 4)')
 
-    parser.add_argument("--data", help="path to dataset base directory", default="/mnt/workspace/workgroup/hzli/datasets")
+    parser.add_argument("--data", help="path to dataset base directory", default="/datasets")
     parser.add_argument("--num-classes", default=10, type=int)
     parser.add_argument("-b", "--batch-size", default=256, type=int, metavar="N", help="mini-batch size (default: 256)")
     parser.add_argument("--set","--id-set", help="name of dataset", type=str, default="CIFAR10")
